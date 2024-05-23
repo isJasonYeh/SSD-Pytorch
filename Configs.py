@@ -73,7 +73,7 @@ _C.DATA.DATASET = CN()
 _C.DATA.DATASET.NUM_CLASSES =2
 _C.DATA.DATASET.CLASS_NAME = ('__background__', 'container')
 
-_C.DATA.DATASET.DATA_DIR = r'D:\Development\3313_Machine_Learning\HW3\貨櫃資料集'   # 数据集voc格式,根目录
+_C.DATA.DATASET.DATA_DIR = os.path.join('..', '貨櫃資料集')   # 数据集voc格式,根目录
 _C.DATA.DATASET.TRAIN_SPLIT = 'train'       # 训练集,对应于 /VOCdevkit/VOC2007/ImageSets/Main/train.txt'
 _C.DATA.DATASET.TEST_SPLIT = 'val'          # 测试集,对应于 /VOCdevkit/VOC2007/ImageSets/Main/val.txt'
 
