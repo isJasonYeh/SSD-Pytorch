@@ -45,8 +45,8 @@ _C.TRAIN = CN()
 
 _C.TRAIN.NEG_POS_RATIO = 3      # 负正例比例
 _C.TRAIN.MAX_ITER = 2000      # 训练轮数
-_C.TRAIN.BATCH_SIZE = 16        # 训练批次
-_C.TRAIN.NUM_WORKERS = 4        # 数据数据所使用的线程数
+_C.TRAIN.BATCH_SIZE = 64        # 训练批次
+_C.TRAIN.NUM_WORKERS = 8        # 数据数据所使用的线程数
 _C.OPTIM = CN()
 
 _C.OPTIM.LR = 1e-3              # 初始学习率.默认优化器为SGD

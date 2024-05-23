@@ -2,3 +2,4 @@ matplotlib
 wget
 visdom
 Vizer
+yacs
