@@ -1,0 +1,4 @@
+matplotlib
+wget
+visdom
+Vizer

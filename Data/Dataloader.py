@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : LG
-from torch._six import int_classes as _int_classes
+# from torch._six import int_classes as _int_classes
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import RandomSampler, SequentialSampler
 from torch.utils.data import Sampler
@@ -27,11 +27,13 @@ class BatchSampler_Our(Sampler):
             raise ValueError("sampler should be an instance of "
                              "torch.utils.data.Sampler, but got sampler={}"
                              .format(sampler))
-        if not isinstance(batch_size, _int_classes) or isinstance(batch_size, bool) or \
+        # if not isinstance(batch_size, _int_classes) or isinstance(batch_size, bool) or \
+        if not isinstance(batch_size, int) or isinstance(batch_size, bool) or \
                 batch_size <= 0:
             raise ValueError("batch_size should be a positive integer value, "
                              "but got batch_size={}".format(batch_size))
-        if not isinstance(max_iteration, _int_classes) or isinstance(max_iteration, bool) or \
+        # if not isinstance(max_iteration, _int_classes) or isinstance(max_iteration, bool) or \
+        if not isinstance(max_iteration, int) or isinstance(max_iteration, bool) or \
                 max_iteration <= 0:
             raise ValueError("max_iter should be a positive integer value, "
                              "but got max_iter={}".format(max_iteration))
