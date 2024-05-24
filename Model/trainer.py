@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Author  : LG
+import csv
 import torch
 from torch.optim.lr_scheduler import MultiStepLR
 from Data import Our_Dataloader
@@ -112,6 +113,10 @@ class Trainer(object):
         print(' Start Train......')
         print(' -------' * 20)
 
+        with open('result.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['Iter', 'Lr', 'Loss', 'cls_loss', 'reg_loss'])
+
         for iteration, (images, boxes, labels, image_names) in enumerate(data_loader):
             iteration+=1
             boxes, labels = boxes.to('cuda'), labels.to('cuda')
@@ -132,11 +137,15 @@ class Trainer(object):
             if iteration % 10 == 0:
                 print('Iter : {}/{} | Lr : {} | Loss : {:.4f} | cls_loss : {:.4f} | reg_loss : {:.4f}'.format(iteration, self.iterations, lr, loss.item(), cls_loss.item(), reg_loss.item()))
 
-            if self.vis and iteration % self.vis_step == 0:
-                visdom_line(self.vis, y=[loss], x=iteration, win_name='loss')
-                visdom_line(self.vis, y=[reg_loss], x=iteration, win_name='reg_loss')
-                visdom_line(self.vis, y=[cls_loss], x=iteration, win_name='cls_loss')
-                visdom_line(self.vis, y=[lr], x=iteration, win_name='lr')
+                with open('result.csv', 'a+', newline='') as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(iteration, self.iterations, lr, loss.item(), cls_loss.item(), reg_loss.item())
+
+            # if self.vis and iteration % self.vis_step == 0:
+            #     visdom_line(self.vis, y=[loss], x=iteration, win_name='loss')
+            #     visdom_line(self.vis, y=[reg_loss], x=iteration, win_name='reg_loss')
+            #     visdom_line(self.vis, y=[cls_loss], x=iteration, win_name='cls_loss')
+            #     visdom_line(self.vis, y=[lr], x=iteration, win_name='lr')
 
             if iteration % self.model_save_step == 0:
                 torch.save(model.module.state_dict(), '{}/model_{}.pkl'.format(self.model_save_root, iteration))
