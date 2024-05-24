@@ -139,7 +139,7 @@ class Trainer(object):
 
                 with open('result.csv', 'a+', newline='') as csvfile:
                     writer = csv.writer(csvfile)
-                    writer.writerow(iteration, self.iterations, lr, loss.item(), cls_loss.item(), reg_loss.item())
+                    writer.writerow([iteration, self.iterations, lr, loss.item(), cls_loss.item(), reg_loss.item()])
 
             # if self.vis and iteration % self.vis_step == 0:
             #     visdom_line(self.vis, y=[loss], x=iteration, win_name='loss')
