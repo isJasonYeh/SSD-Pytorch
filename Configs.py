@@ -13,7 +13,7 @@ _C = CN()
 _C.FILE = CN()
 
 _C.FILE.PRETRAIN_WEIGHT_ROOT = project_root+'/Weights/pretrained'           # 会使用到的预训练模型
-_C.FILE.VGG16_WEIGHT = 'model_4000.pkl'                                # vgg预训练模型
+_C.FILE.VGG16_WEIGHT = 'vgg16_reducedfc.pth'                                # vgg预训练模型
 _C.FILE.MODEL_SAVE_ROOT = r'Weights/trained'    # 训练模型的保存
 
 _C.DEVICE = CN()
@@ -46,7 +46,7 @@ _C.TRAIN = CN()
 _C.TRAIN.NEG_POS_RATIO = 3      # 负正例比例
 _C.TRAIN.MAX_ITER = 6000      # 训练轮数
 _C.TRAIN.BATCH_SIZE = 32        # 训练批次
-_C.TRAIN.NUM_WORKERS = 8        # 数据数据所使用的线程数
+_C.TRAIN.NUM_WORKERS = 64      # 数据数据所使用的线程数
 _C.OPTIM = CN()
 
 _C.OPTIM.LR = 1e-3              # 初始学习率.默认优化器为SGD
