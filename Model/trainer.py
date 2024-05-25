@@ -69,12 +69,12 @@ class Trainer(object):
         if model_save_step:
             self.model_save_step = model_save_step
 
-        self.vis = setup_visdom()
-        if vis:
-            self.vis = vis
-        self.vis_step = self.cfg.STEP.VIS_STEP
-        if vis_step:
-            self.vis_step = vis_step
+        # self.vis = setup_visdom()
+        # if vis:
+        #     self.vis = vis
+        # self.vis_step = self.cfg.STEP.VIS_STEP
+        # if vis_step:
+        #     self.vis_step = vis_step
 
         self.model = None
         self.loss_func = None
