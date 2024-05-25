@@ -119,9 +119,9 @@ class Trainer(object):
 
         for iteration, (images, boxes, labels, image_names) in enumerate(data_loader):
             iteration+=1
-            if iteration < 4000:
-                print(f'Skip iter : {iteration}')
-                continue
+            # if iteration < 4000:
+            #     print(f'Skip iter : {iteration}')
+            #     continue
             boxes, labels = boxes.to('cuda'), labels.to('cuda')
             cls_logits, bbox_preds = self.model(images)
             reg_loss, cls_loss = self.loss_func(cls_logits, bbox_preds, labels, boxes)
