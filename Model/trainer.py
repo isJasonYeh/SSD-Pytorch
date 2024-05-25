@@ -119,7 +119,7 @@ class Trainer(object):
 
         for iteration, (images, boxes, labels, image_names) in enumerate(data_loader):
             iteration+=1
-            if iteration > 4000:
+            if iteration < 4000:
                 continue
             boxes, labels = boxes.to('cuda'), labels.to('cuda')
             cls_logits, bbox_preds = self.model(images)
