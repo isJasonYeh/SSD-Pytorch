@@ -44,7 +44,7 @@ _C.MODEL.ANCHORS.SIZE_VARIANCE = 0.2    # 解码
 _C.TRAIN = CN()
 
 _C.TRAIN.NEG_POS_RATIO = 3      # 负正例比例
-_C.TRAIN.MAX_ITER = 2000      # 训练轮数
+_C.TRAIN.MAX_ITER = 6000      # 训练轮数
 _C.TRAIN.BATCH_SIZE = 32        # 训练批次
 _C.TRAIN.NUM_WORKERS = 8        # 数据数据所使用的线程数
 _C.OPTIM = CN()
@@ -55,7 +55,7 @@ _C.OPTIM.WEIGHT_DECAY = 5e-4    # 权重衰减,L2正则化.默认优化器为SGD
 
 _C.OPTIM.SCHEDULER = CN()       # 默认使用MultiStepLR
 _C.OPTIM.SCHEDULER.GAMMA = 0.1  # 学习率衰减率
-_C.OPTIM.SCHEDULER.LR_STEPS = [1200, 1600]
+_C.OPTIM.SCHEDULER.LR_STEPS = [3600, 4800]
 
 
 _C.MODEL.TEST = CN()
